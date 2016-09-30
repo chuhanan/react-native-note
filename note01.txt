@@ -6,6 +6,10 @@ emmet
 babel
 minimap
 
+language-git 插件
+git config --global core.editor "atom --wait"
+
+
 
 
 rn  import rootAction 的时候一定要注意 
@@ -54,10 +58,12 @@ export default connect(
 
 fetchData(url,cb)  回调的时候怎么去处理  是不是就不要传递dispatch参数
 
-
+Swiper
 https://github.com/leecade/react-native-swiper  
-
+redux
 http://www.lijianfei.cn/2016/04/20/RN-Rudex-Exp/index.html 
+device-info
+
 
 
 安卓白屏:
