@@ -1,0 +1,8 @@
+
+
+npm config setloglevel=http 
+npm outdated
+doskey /history >> cmd.log
+npm i nrm -g   //安装nrm源
+nrm test
+nrm use cnpm

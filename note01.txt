@@ -1,0 +1,66 @@
+atom theme
+
+atom-react-native - ..
+activate-power-mode
+emmet
+babel
+minimap
+
+
+
+rn  import rootAction 的时候一定要注意 
+
+
+export function fetchData(url) {
+  //我们使用dispatch的方式来让外部使用到这里的 redux方法  ...这里解释不太好
+  //之所以需要  dispatch  是因为我们调用  action 方法的时候必须通过dispatch   比如  dispatch(addFields({age:1111111}))
+  //这个形参怎么来的 为什么有这样的方法 提供呢
+    return dispatch => {
+        //我们在这里写  网络方法
+        fetch(url)
+        .then((response)=>response.json())//这里是设置服务器返回的数据格式  还有一种是text  大多数是  json
+        .then((data)=>{
+            //这里是网络请求成功返回的数据json
+            //我们可以在这里调用  更新state的方法 也就是addFields 来达到你的需求  也可以使用回调方法做其他处理
+            dispatch(addFields({age:1111111})) //这里不就是在改变你的state 吗
+
+            dispatch(addFields({title:data.total}))
+          //  alert(JSON.stringify(data))
+        })
+        .catch((error)=>{
+          //这里是各种错误和失败
+          alert(error)
+        })
+    }
+}
+
+//我们回到这里来看  connect 方法 完整的是   还有一个方法就是   dispatch => {}
+export default connect(
+  (state)=>{
+    const {fields} = state;
+    return{
+      fields
+    }
+  },
+  // dispatch => {
+  //   //这里就是一个专门处理你  action  方法的
+  //   //我现在通过这样的方法把  updateFields  这个方法 当参数一样传了过去  和之前的方式不一样  后面使用也要更着改变
+  //   //由于我加了这样的方法  我把action里面的全部方法 返回给了页面 后面的使用也需要改变  有点多
+  //   const action = bindActionCreators(rootAction,dispatch)
+  //   return {...action}
+  // }
+
+)(App)
+
+fetchData(url,cb)  回调的时候怎么去处理  是不是就不要传递dispatch参数
+
+
+https://github.com/leecade/react-native-swiper  
+
+http://www.lijianfei.cn/2016/04/20/RN-Rudex-Exp/index.html 
+
+
+安卓白屏:
+ 1.悬浮窗打开
+ 2.wifi的ip地址  !!!!!
+
